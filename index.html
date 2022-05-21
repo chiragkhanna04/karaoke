@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<head>
+  <title>
+    Recorder v2.2
+  </title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="btnStyle.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background-image: url('bg.jpeg');background-size: 100% 100%;">
+  <video autoplay="" height="340px" width="340px" muted="" style="position: absolute;left: 70%;bottom: 4%;"></video>
+  <div>
+    <div id="player"></div>
+    <span><a id="download" style="display: none ; position: absolute;  left: 35%;bottom: 1%;"><button style="width: 200px;" type="button" class="btn-1"> Download</button></a></span>
+
+    <button type="button" class="logout-btn" id="stop" disabled style="position: absolute;
+    left: 50%;
+    bottom: 1%;">Stop</button>
+    <button type="button"  class="logout-btn" id="record_screen" style="position: absolute;
+    left: 35%;
+    bottom: 1%;">Start Recording</button>
+    <div class="Wrapper">
+      <div class="Input">
+        <input type="text" id="txtUrl" class="Input-text" placeholder="Enter the youtube url">
+      </div>
+    </div>
+     <input class="btn-1" type="button" id="btnPlay" value="Play" />
+  </div>
+  </div>
+</body>
+<script src="main.js"> </script>
+<script src="youtube.js"> </script>
+
+</html>
