@@ -13,29 +13,60 @@
 </head>
 
 <body style="background-image: url('bg.jpeg');background-size: 100% 100%;">
+  <div id ="tnc" style=" height: 654px;
+  width: 714px;
+  position: absolute;
+  z-index: 100;
+  background-color: white;
+  font-size: 30px;
+  border-radius: 25px;
+  margin-top: 35px;">
+    <h1 align="center" style="font-size: 50px;"> T&C </h2>
+      <p style="
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 40px;">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos non quas porro debitis atque ipsa, expedita
+        voluptatibus modi numquam soluta corrupti quam, vel rem cum culpa. Accusantium aspernatur distinctio quis.Lorem
+        ipsum, dolor sit amet consectetur adipisicing elit. Quos non quas porro debitis atque ipsa, expedita
+        voluptatibus modi numquam soluta corrupti quam, vel rem cum culpa. Accusantium aspernatur distinctio quis.
+      </p>
+      <input class="btn-1" type="button"  value="Accept" id ="accept" style="font-size: inherit; left: 35%; bottom: -5%;"/>
+
+  </div>
   <video autoplay="" height="340px" width="340px" muted="" style="position: absolute;left: 70%;bottom: 4%;"></video>
   <div>
-    <div id="player"></div>
-    <span><a id="download" style="display: none ; position: absolute;  left: 35%;bottom: 1%;"><button style="width: 200px;" type="button" class="btn-1"> Download</button></a></span>
+    <div id="player" style="    border-color: hotpink;
+    border-style: solid;
+    border-width: 30px;
+    box-sizing: border-box;"></div>
+    <span><a id="download" style="display: none ; position: absolute;  left: 22%;bottom: 46%;"><button
+          style="width: 200px;" type="button" class="btn-1"> Download</button></a></span>
 
     <button type="button" class="logout-btn" id="stop" disabled style="position: absolute;
     left: 50%;
     bottom: 1%;">Stop</button>
-    <button type="button"  class="logout-btn" id="record_screen" style="position: absolute;
-    left: 35%;
+    <button type="button" class="logout-btn" id="record_screen" style="position: absolute;
+    left: 25%;
     bottom: 1%;">Start Recording</button>
     <div class="Wrapper">
       <div class="Input">
-        <input type="text" id="txtUrl" class="Input-text" placeholder="Enter the youtube url" value="https://www.youtube.com/watch?v=z-GBWp2p-Ss" readonly="readonly">
+        <input type="text" id="txtUrl" class="Input-text" placeholder="Enter the youtube url"
+          value="https://www.youtube.com/watch?v=z-GBWp2p-Ss" readonly="readonly">
       </div>
     </div>
-     <input class="btn-1" type="button" id="btnPlay" value="Play" />
+    <input class="btn-1" type="button" id="btnPlay" value="Play" />
   </div>
   </div>
 </body>
 <script src="main.js"> </script>
 <script src="youtube.js"> </script>
 <script>
-    document.getElementById("btnPlay").click();
+  document.getElementById("btnPlay").click();
+  document.getElementById("accept").addEventListener('click', ()=>{
+    document.getElementById("tnc").remove()
+  });
+
 </script>
+
 </html>
