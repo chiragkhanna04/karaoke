@@ -69,8 +69,8 @@
   </div>
   </div>
   <div style="position: absolute; color: white;bottom: 10px; z-index: 99; display">
-    <button type="button" class="logout-btn" id="stop"  style="margin: 0 70px;">Stop</button>
-    <button type="button" class="logout-btn" id="record_screen"  style="margin: 0 41px;">Start Recording</button>
+    <button type="button" class="logout-btn" id="stop"  style="margin: 0 70px; display: none">Stop</button>
+    <button type="button" class="logout-btn" id="record_screen"  style="margin: 0 41px; display: none">Start Recording</button>
   </div>
   <div class="top-hiding-banner"></div>
   <div class="bottom-hiding-banner"></div>
@@ -82,6 +82,9 @@
   document.getElementById("btnPlay").click();
   document.getElementById("accept").addEventListener('click', ()=>{
     document.getElementById("tnc").remove()
+    document.getElementById("stop").style.display = "inline-block"
+    document.getElementById("record_screen").style.display = "inline-block"
+
   });
 
 </script>
