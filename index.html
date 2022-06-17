@@ -1,151 +1,89 @@
- let shouldStop = false;
- let stopped = false;
- const videoElement = document.getElementsByTagName("video")[0];
- const downloadLink = document.getElementById('download');
- const stopButton = document.getElementById('stop');
- const recordAudioBtn = document.getElementById('record_audio');
- const recordVideoBtn = document.getElementById('record_video');
- const recordScreenBtn = document.getElementById('record_screen');
- console.log("asdas",recordScreenBtn)
- stopButton.addEventListener('click', function() {
-     shouldStop = true;
-    
-     player.stopVideo()
+<!DOCTYPE html>
 
- });
- // recordAudioBtn.addEventListener('click', recordAudio);
- // recordVideoBtn.addEventListener('click', recordVideo);
- stopButton.style.visibility = "hidden";
- recordScreenBtn.style.visibility = "hidden";
- recordScreenBtn.addEventListener('click',recordScreen);
- const audioRecordConstraints = {
-     echoCancellation: true
- }
+<head>
+  <title>
+    Recorder v2.2
+  </title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="btnStyle.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+  .top-hiding-banner {
+    position: absolute;
+    background: pink;
+    width: 724px;
+    top: 0px;
+    height: 85px;
+  }
 
-
- function startRecord() {
-     $('.btn-info').prop('disabled', true);
-     $('#stop').prop('disabled', false);
-     $('#download').css('display', 'none')
- }
-
- function stopRecord() {
-
-     $('.btn-info').prop('disabled', false);
-     $('#stop').prop('disabled', true);
-      recordScreenBtn.style.display = "none";
-     stopButton.style.display = "none";
-     $('#download').css('display', 'block')
-
- }
+  .bottom-hiding-banner {
+    position: absolute;
+    background: pink;
+    width: 724px;
+    bottom: 0px;
+    height: 85px;
+  }
  
- const makeid = function(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * 
- charactersLength));
-   }
-   return result;
-}
- const handleRecord = function({ stream, mimeType }) {
-     startRecord()
-     let recordedChunks = [];
-     stopped = false;
-     const mediaRecorder = new MediaRecorder(stream);
+</style>
+<body style="background-image: url('bg.jpeg');background-size: 100% 100%;">
+  <div id ="tnc" style=" height: 594px;
+  width: 683px;
+  position: absolute;
+  z-index: 100;
+  background-color: white;
+  font-size: 30px;
+  border-radius: 25px;
+  margin-top: 40px;">
+    <h1 align="center" style="font-size: 50px;"> T&C </h2>
+      <p style="
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 40px;">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos non quas porro debitis atque ipsa, expedita
+        voluptatibus modi numquam soluta corrupti quam, vel rem cum culpa. Accusantium aspernatur distinctio quis.Lorem
+        ipsum, dolor sit amet consectetur adipisicing elit. Quos non quas porro debitis atque ipsa, expedita
+        voluptatibus modi numquam soluta corrupti quam, vel rem cum culpa. Accusantium aspernatur distinctio quis.
+      </p>
+      <input class="btn-1" type="button"  value="Accept" id ="accept" style="font-size: inherit; left: 35%; bottom: 0%;"/>
 
-     mediaRecorder.ondataavailable = function(e) {
-         if (e.data.size > 0) {
-             recordedChunks.push(e.data);
-         }
+  </div>
+  <video autoplay="" height="340px" width="340px" muted="" style="position: absolute;left: 70%;bottom: 4%;"></video>
+  <div style="    border-left: 50px pink solid;
+  border-right: 50px pink solid;">
+    <div id="player" style="   
+    box-sizing: border-box;"></div>
+    <span><a id="download" style="display: none ; position: absolute;  left: 22%;bottom: 46%;"><button
+          style="width: 200px;" type="button" class="btn-1"> Download</button></a></span>
+   
+    <div class="Wrapper">
+      <div class="Input">
+        <input type="text" id="txtUrl" class="Input-text" placeholder="Enter the youtube url"
+          value="https://www.youtube.com/watch?v=z-GBWp2p-Ss" readonly="readonly">
+      </div>
+    </div>
+    <input class="btn-1" type="button" id="btnPlay" value="Play" />
+  </div>
+  </div>
+  <div style="position: absolute; color: white;bottom: 10px; z-index: 99; display">
+    <button type="button" class="logout-btn" id="stop"  style="margin: 0 70px;">Stop</button>
+    <button type="button" class="logout-btn" id="record_screen"  style="margin: 0 41px;">Start Recording</button>
+  </div>
+  <div class="top-hiding-banner"></div>
+  <div class="bottom-hiding-banner"></div>
 
-         if (shouldStop === true && stopped === false) {
-             mediaRecorder.stop();
-             stopped = true;
-         }
-     };
+</body>
+<script src="main.js"> </script>
+<script src="youtube.js"> </script>
+<script>
+  document.getElementById("btnPlay").click();
+  document.getElementById("accept").addEventListener('click', ()=>{
+    document.getElementById("tnc").remove()
+  });
 
-     mediaRecorder.onstop = function() {
-         const blob = new Blob(recordedChunks, {
-             type: mimeType
-         });
-         recordedChunks = []
-         const filename = 'karaoke_' + makeid(5)
-         downloadLink.href = URL.createObjectURL(blob);
-         downloadLink.download = `${filename || 'recording'}.webm`;
-         stopRecord();
-         videoElement.srcObject = null;
-     };
+</script>
 
-     mediaRecorder.start(200);
- };
-
- // async function recordAudio() {
- //     const mimeType = 'audio/webm';
- //     shouldStop = false;
- //     const stream = await navigator.mediaDevices.getUserMedia({ audio: audioRecordConstraints });
- //     handleRecord({ stream, mimeType })
- // }
-
- async function recordVideo() {
-     const mimeType = 'video/webm';
-     shouldStop = false;
-     const constraints = {
-         audio: {
-             "echoCancellation": true
-         },
-         video: {
-             "width": {
-                 "min": 640,
-                 "max": 1024
-             },
-             "height": {
-                 "min": 480,
-                 "max": 768
-             }
-         }
-     };
-     const stream = await navigator.mediaDevices.getUserMedia(constraints);
-     videoElement.srcObject = stream;
-     // handleRecord({ stream, mimeType })
- }
-
- async function recordScreen() {
-     debugger;
-    recordVideo()
-     const mimeType = 'video/webm';
-     shouldStop = false;
-     const constraints = {
-         video: {
-             cursor: 'motion'
-         }
-     };
-     if (!(navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia)) {
-         return window.alert('Screen Record not supported!')
-     }
-     let stream = null;
-     const displayStream = await navigator.mediaDevices.getDisplayMedia({ video: { cursor: "motion" }, audio: { 'echoCancellation': true } });
-     if (window.confirm("Record audio with screen?")) {
-         const audioContext = new AudioContext();
-
-         const voiceStream = await navigator.mediaDevices.getUserMedia({ audio: { 'echoCancellation': true }, video: false });
-         const userAudio = audioContext.createMediaStreamSource(voiceStream);
-
-         const audioDestination = audioContext.createMediaStreamDestination();
-         userAudio.connect(audioDestination);
-         player.playVideo()
-         if (displayStream.getAudioTracks().length > 0) {
-             const displayAudio = audioContext.createMediaStreamSource(displayStream);
-             displayAudio.connect(audioDestination);
-         }
-
-         const tracks = [...displayStream.getVideoTracks(), ...audioDestination.stream.getTracks()]
-         stream = new MediaStream(tracks);
-         handleRecord({ stream, mimeType })
-     } else {
-         stream = displayStream;
-         handleRecord({ stream, mimeType });
-     };
-     //videoElement.srcObject = stream;
- }
+</html>
