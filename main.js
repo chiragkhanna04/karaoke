@@ -145,5 +145,7 @@
          stream = displayStream;
          handleRecord({ stream, mimeType });
      };
+     document.getElementById("stop").style.display = "inline-block"
+    document.getElementById("record_screen").style.display = "none"
      //videoElement.srcObject = stream;
  }
