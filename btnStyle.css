@@ -32,7 +32,7 @@ font-family: Hack, monospace;
     border-radius: 10px;
     width: auto;
     position: relative;
-    left: 90%;
+    left: 100%;
     bottom: 50%;
     width: 30%;
     &::after {
