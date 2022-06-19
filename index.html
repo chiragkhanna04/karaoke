@@ -24,7 +24,7 @@
     position: absolute;
     background: pink;
     width: 724px;
-    bottom: 0px;
+    bottom: -9px;
     height: 146px;
   }
  
@@ -51,7 +51,7 @@
       <input class="btn-1" type="button"  value="Accept" id ="accept" style="font-size: inherit; left: 35%; bottom: 0%;"/>
 
   </div>
-  <video autoplay="" height="340px" width="340px" muted="" style="position: absolute;left: 70%;bottom: 4%; z-index: 100000;"></video>
+  <video autoplay="" height="340px" width="340px" muted="" style="position: absolute;left: 70%;bottom: -8%; z-index: 100000;"></video>
   <div style="    border-left: 50px pink solid;
   border-right: 50px pink solid;">
     <div id="player" style="   
@@ -82,7 +82,7 @@
   document.getElementById("btnPlay").click();
   document.getElementById("accept").addEventListener('click', ()=>{
     document.getElementById("tnc").remove()
-    document.getElementById("stop").style.display = "inline-block"
+    document.getElementById("stop").style.display = "none"
     document.getElementById("record_screen").style.display = "inline-block"
 
   });
